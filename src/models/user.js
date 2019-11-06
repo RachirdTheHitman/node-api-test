@@ -13,27 +13,27 @@ const userSchema = new mongoose.Schema({
     required: true,
     trim: true
   },
-  email: {
-    type: String,
-    required: true,
-    trim: true,
-    validate(value) {
-      if (!validator.isEmail(value)) {
-        throw new Error("Email is invalid");
-      }
-    }
-  },
-  password: {
-    type: String,
-    required: true,
-    minlength: 7,
-    trim: true,
-    validate(value) {
-      if (value.toLowerCase().includes("password")) {
-        throw new Error('Password cannot contain "password"');
-      }
-    }
-  },
+  // email: {
+  //   type: String,
+  //   required: true,
+  //   trim: true,
+  //   validate(value) {
+  //     if (!validator.isEmail(value)) {
+  //       throw new Error("Email is invalid");
+  //     }
+  //   }
+  // },
+  // password: {
+  //   type: String,
+  //   required: true,
+  //   minlength: 7,
+  //   trim: true,
+  //   validate(value) {
+  //     if (value.toLowerCase().includes("password")) {
+  //       throw new Error('Password cannot contain "password"');
+  //     }
+  //   }
+  // },
   age: {
     type: Number,
     default: 0,
@@ -45,7 +45,8 @@ const userSchema = new mongoose.Schema({
   },
   paydate: {
     type: Date,
-    default: Date.now
+    default: Date.now,
+    required: true
   },
   payfreq: {
     type: String,
