@@ -55,5 +55,13 @@ test("Should fail the test and receive 400 bad quest when trying creating a same
       netIncome: 4641,
       super: 524,
       pay: 4117
-    }).expect(400);
+    })
+    .expect(400);
+});
+
+//Retrieving all the users documents existed in the users collection
+test("Should retrieve all the user documents in users collection", async () => {
+  await request(app)
+    .get("/users")
+    .expect(200);
 });
