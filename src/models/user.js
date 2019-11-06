@@ -121,7 +121,7 @@ userSchema.pre("save", async function(next) {
   if (userRetrieved.length) {
     // console.log("userRetrieved", userRetrieved);
     // console.log("user exists: ", user.name);
-    next(new Error("The user exists and already be paid in this month!"));
+    throw new Error("The user exists and already be paid in this month!");
   }
 
   // if (user.isModified("password")) {
