@@ -34,15 +34,15 @@ const userSchema = new mongoose.Schema({
   //     }
   //   }
   // },
-  age: {
-    type: Number,
-    default: 0,
-    validate(value) {
-      if (value < 0) {
-        throw new Error("Age must be a positive number");
-      }
-    }
-  },
+  // age: {
+  //   type: Number,
+  //   default: 0,
+  //   validate(value) {
+  //     if (value < 0) {
+  //       throw new Error("Age must be a positive number");
+  //     }
+  //   }
+  // },
   paydate: {
     type: Date,
     default: Date.now,
@@ -117,16 +117,16 @@ const userSchema = new mongoose.Schema({
 userSchema.pre("save", async function(next) {
   const user = this;
 
-  const userRetrieved = await User.find({ name: user.name });
+  const userRetrieved = await User.find({ firstname: user.firstname, lastname: user.lastname });
   if (userRetrieved.length) {
-    console.log("userRetrieved", userRetrieved);
-    console.log("user exists: ", user.name);
+    // console.log("userRetrieved", userRetrieved);
+    // console.log("user exists: ", user.name);
     next(new Error("The user exists and already be paid in this month!"));
   }
 
-  if (user.isModified("password")) {
-    user.password = await bcrypt.hash(user.password, 8);
-  }
+  // if (user.isModified("password")) {
+  //   user.password = await bcrypt.hash(user.password, 8);
+  // }
 
   next();
 });
