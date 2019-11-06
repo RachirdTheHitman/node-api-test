@@ -3,7 +3,12 @@ const validator = require("validator");
 const bcrypt = require("bcryptjs");
 
 const userSchema = new mongoose.Schema({
-  name: {
+  firstname: {
+    type: String,
+    required: true,
+    trim: true
+  },
+  lastname: {
     type: String,
     required: true,
     trim: true
@@ -38,15 +43,15 @@ const userSchema = new mongoose.Schema({
       }
     }
   },
-  payDate: {
+  paydate: {
     type: Date,
     default: Date.now
   },
-  payFrequency: {
+  payfreq: {
     type: String,
     default: 'Monthly'
   },
-  annualIncome: {
+  annualsalary: {
     type: Number,
     required: true,
     default: 0,
